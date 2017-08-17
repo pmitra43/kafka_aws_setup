@@ -18,7 +18,7 @@ response = client.request_spot_instances(
         'KeyName': 'New_MS_POC',
         'EbsOptimized': False,
         'ImageId': 'ami-3f88f350',
-        'InstanceType': 'r4.large',
+        'InstanceType': 'r4.xlarge',
         'Placement': {
             'AvailabilityZone': 'ap-south-1b',
             'Tenancy': 'default',
@@ -26,7 +26,7 @@ response = client.request_spot_instances(
         'SubnetId': 'subnet-1e128653',
         'UserData': encodedUserData.decode('utf-8'),
     },
-    SpotPrice='0.025'
+    SpotPrice='0.06'
 )
 
 print(response)
