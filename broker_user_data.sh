@@ -15,6 +15,5 @@ sed -i "s/#*listeners=PLAINTEXT:\/\/.*:9092/listeners=PLAINTEXT:\/\/$MY_IP:9092/
 sed -i 's/zookeeper.connect=.*/zookeeper.connect=$ZOOKEEPER_IP:2181/' $KAFKA_PATH/config/server.properties
 
 JMX_PORT=55555 $KAFKA_PATH/bin/kafka-server-start.sh $KAFKA_PATH/config/server.properties > $KAFKA_PATH/broker_log.log &
-sleep 1m
 cd $JMX_PATH
-JMXTRANS_OPTS="-Dport1=55555 -Durl1=localhost -DinfluxUrl=http://10.0.0.83:8086/ -DinfluxDb=kafka -DinfluxUser=admin -DinfluxPwd=admin" JAR_FILE=jmxtrans-259-all.jar ./jmxtrans.sh start
+JMXTRANS_OPTS="-Dport1=55555 -Durl1=localhost -DinfluxUrl=http://10.0.0.83:8086/ -DinfluxDb=kafka -DinfluxUser=admin -DinfluxPwd=admin" SECONDS_BETWEEN_RUNS=15 JAR_FILE=jmxtrans-259-all.jar ./jmxtrans.sh start
